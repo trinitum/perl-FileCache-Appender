@@ -4,22 +4,23 @@ use warnings;
 use ExtUtils::MakeMaker 6.3002;
 
 WriteMakefile(
-    NAME                => 'FileCache::Appender',
-    AUTHOR              => q{Pavel Shaydo <zwon@cpan.org>},
-    VERSION_FROM        => 'lib/FileCache/Appender.pm',
-    ABSTRACT_FROM       => 'lib/FileCache/Appender.pm',
-    LICENSE             => 'perl',
-    PL_FILES            => {},
-    PREREQ_PM => {
-    },
-    BUILD_REQUIRES => {
-        'Test::More' => 0.94,
+    NAME          => 'FileCache::Appender',
+    AUTHOR        => q{Pavel Shaydo <zwon@cpan.org>},
+    VERSION_FROM  => 'lib/FileCache/Appender.pm',
+    ABSTRACT_FROM => 'lib/FileCache/Appender.pm',
+    LICENSE       => 'perl',
+    PL_FILES      => {},
+    PREREQ_PM     => {},
+    TEST_REQUIRES => {
+        'Test::Most'         => 0.22,
+        'Test::FailWarnings' => 0,
+        'Path::Tiny'         => 0,
     },
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 6.3002,
     },
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'FileCache-Appender-*' },
+    dist       => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean      => { FILES    => 'FileCache-Appender-*' },
     META_MERGE => {
         no_index => {
             file => 'README.pod'
@@ -30,7 +31,7 @@ WriteMakefile(
             bugtracker => 'https://github.com/trinitum/perl-FileCache-Appender/issues',
             repository => 'git://github.com/trinitum/perl-FileCache-Appender',
 
-            license    => 'http://dev.perl.org/licenses/',
+            license => 'http://dev.perl.org/licenses/',
         },
     },
 );
