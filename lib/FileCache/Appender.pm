@@ -5,6 +5,7 @@ our $VERSION = "0.01";
 $VERSION = eval $VERSION;
 
 use Carp;
+use Path::Tiny;
 
 =head1 NAME
 
@@ -42,6 +43,10 @@ maximum number of file handles to cache. If cache reaches this size, each time
 you requesting a new file handle, one of the existing will be removed from the
 cache.
 
+=item B<mkpath>
+
+if directory in which file should be opened doesn't exist, create it
+
 =back
 
 =cut
@@ -63,6 +68,7 @@ file is not in the cache, will open file for appending and cache file handle.
 
 sub file {
     my ( $self, $path ) = @_;
+    $path = path($path)->absolute;
     unless ( ref $self ) {
         $self = $global //= $self->new;
     }
@@ -70,6 +76,10 @@ sub file {
     unless ( $cache->{$path} ) {
         if ( $self->{_open_count} == $self->{max_open} ) {
             delete $cache->{ ( keys %$cache )[ rand $self->{_open_count}-- ] };
+        }
+        if ( $self->{mkpath} ) {
+            my $dir = path( $path->dirname );
+            $dir->exists or $dir->mkpath;
         }
         open my $fd, ">>", $path or croak "Couldn't open $path: $!";
         $self->{_open_count}++;

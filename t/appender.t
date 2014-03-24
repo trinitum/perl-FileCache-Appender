@@ -26,4 +26,21 @@ dies_ok {
 }
 "Failed to open file in non-existing directory";
 
+ok !-e path( $dir, "subdir" ), "didn't create directory";
+
+subtest "with mkpath parameter" => sub {
+    my $mkpath = FileCache::Appender->new( mkpath => 1 );
+    my $fh = $mkpath->file( path( $dir, "sub", "dir", "file" ) );
+    ok $fh, "returned file handle for path with new directories";
+    ok -d path( $dir, "sub", "dir" ), "created subdirectories";
+    ok -f path( $dir, "sub", "dir", "file" ), "created file";
+    my $curdir = Path::Tiny->cwd;
+    chdir $dir;
+    $fh = $mkpath->file("boo");
+    ok $fh, "got file handle for file without path";
+    chdir $curdir;
+    my $fh2 = $mkpath->file( path( $dir, "boo" ) );
+    is $fh, $fh2, "got the same file handle when specified full path";
+};
+
 done_testing;
