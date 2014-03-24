@@ -5,6 +5,7 @@ MANIFEST			This list of files
 README
 README.pod
 t/00-load.t
+t/appender.t
 xt/manifest.t
 xt/pod-coverage.t
 xt/pod-spell.t
