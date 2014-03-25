@@ -10,7 +10,7 @@ WriteMakefile(
     ABSTRACT_FROM => 'lib/FileCache/Appender.pm',
     LICENSE       => 'perl',
     PL_FILES      => {},
-    PREREQ_PM     => { 'Path::Tiny' => 0, },
+    PREREQ_PM     => { 'Path::Tiny' => 0.012, },
     TEST_REQUIRES => {
         'Test::Most'         => 0.22,
         'Test::FailWarnings' => 0,
