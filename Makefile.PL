@@ -1,7 +1,7 @@
 use 5.008;
 use strict;
 use warnings;
-use ExtUtils::MakeMaker 6.3002;
+use ExtUtils::MakeMaker 6.64;
 
 WriteMakefile(
     NAME          => 'FileCache::Appender',
@@ -16,7 +16,7 @@ WriteMakefile(
         'Test::FailWarnings' => 0,
     },
     CONFIGURE_REQUIRES => {
-        'ExtUtils::MakeMaker' => 6.3002,
+        'ExtUtils::MakeMaker' => 6.64,
     },
     dist       => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean      => { FILES    => 'FileCache-Appender-*' },
