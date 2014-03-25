@@ -1,7 +1,7 @@
 package FileCache::Appender;
 use strict;
 use warnings;
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 $VERSION = eval $VERSION;
 
 use Carp;
