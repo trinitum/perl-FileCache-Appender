@@ -88,6 +88,19 @@ sub file {
     return $cache->{$path};
 }
 
+=head2 $self->clear
+
+clear the cache
+
+=cut
+
+sub clear {
+    my $self = shift;
+    $self->{_fd_cache}   = {};
+    $self->{_open_count} = 0;
+    return;
+}
+
 1;
 
 __END__
