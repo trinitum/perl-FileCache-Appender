@@ -1,7 +1,7 @@
 package FileCache::Appender;
 use strict;
 use warnings;
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -13,7 +13,7 @@ FileCache::Appender - cache file handles opened for appending
 
 =head1 VERSION
 
-This document describes FileCache::Appender version 0.02
+This document describes FileCache::Appender version 0.03
 
 =head1 SYNOPSIS
 
