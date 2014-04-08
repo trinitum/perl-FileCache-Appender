@@ -39,8 +39,8 @@ subtest "with mkpath parameter" => sub {
     $fh = $mkpath->file("boo");
     ok $fh, "got file handle for file without path";
     chdir $curdir;
-    my $fh2 = $mkpath->file( path( $dir, "boo" ) );
-    is $fh, $fh2, "got the same file handle when specified full path";
+    my $fh2 = $mkpath->file( path( $dir, "boo" )->absolute );
+    is $fh, $fh2, "got the same file handle when specified absolute path";
 };
 
 done_testing;
